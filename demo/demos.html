@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Demos</title>
+	<script>(function () {
+		require = {
+			baseUrl : '/'
+		};
+	}())</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.js" data-main="src/goro"></script>
+</head>
+<body>
+
+	<goro-element src="src/elements/TestElement"></goro-element>
+	<test-element></test-element>
+
+	<br>
+
+	<goro-element src="src/elements/SonyaProgressBar"></goro-element>
+	<sonya-progress-bar completion="90" style="width:300px;height:15px"></sonya-progress-bar>
+
+	<br>
+
+	<goro-element src="src/elements/SonyaSolarSystem"></goro-element>
+	<sonya-solar-system>
+		<label for="sun">This is the Sun.</label>
+		<label for="earth">This is where I live.</label>
+	</sonya-solar-system>
+
+</body>
+</html>

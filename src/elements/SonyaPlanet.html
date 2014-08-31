@@ -1,0 +1,47 @@
+<template>
+	<style>
+		:host {
+			position : relative;
+			display : inline-block;
+		}
+		.container {
+			position : absolute;
+			top : 0;
+			left : 0;
+			right : 0;
+			bottom : 0;
+			background-size : 100% 100%;
+		}
+		.label {
+			position : absolute;
+			display : block;
+			left : 50%;
+			bottom : 100%;
+			background : #dfe;
+			max-width : 100%;
+			transform : translate(-50%, -25%);
+			font-size : 75%;
+			box-sizing : border-box;
+			padding : .1em .3em;
+			border-radius : .3em;
+			border : 1px dotted rgba(0, 0, 0, .5);
+			text-align : center;
+		}
+		.container > .label {
+			visibility : hidden;
+			opacity : 0;
+			transition : visibility 0s .15s, opacity .15s;
+		}
+		.container:hover > .label {
+			visibility : visible;
+			opacity : 1;
+			transition-delay : 0s;
+		}
+	</style>
+
+	<div class="container">
+		<div class="label">
+			<content select="label"></content>
+		</div>
+	</div>
+</template>

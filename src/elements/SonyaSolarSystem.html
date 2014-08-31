@@ -1,0 +1,58 @@
+<template>
+	<style>
+		@-webkit-keyframes orbit {
+			from {
+				transform :
+						translate(-50%, -50%)
+						rotate(0deg)
+						translate(150px, 0)
+						rotate(0deg);
+			}
+			to {
+				transform :
+						translate(-50%, -50%)
+						rotate(-360deg)
+						translate(150px, 0)
+						rotate(360deg);
+			}
+		}
+		:host {
+			display : block;
+			position : relative;
+			width : 400px;
+			height : 400px;
+			background : rgba(0, 0, 0, .75);
+		}
+		.sun,
+		.earth {
+			position : absolute;
+			top : 50%;
+			left : 50%;
+			transform : translate(-50%, -50%);
+		}
+		.earth {
+			-webkit-animation : orbit 20s infinite linear;
+		}
+	</style>
+
+	<goro-element src="src/elements/SonyaPlanet"></goro-element>
+
+	<sonya-planet id="sun" class="sun"
+			sprite="http://www.webweaver.nu/clipart/img/nature/planets/sun-wearing-sunglasses.png"
+			style="width:100px;height:100px"
+	>
+		<label>
+			<content select="label[for='sun']"></content>
+		</label>
+	</sonya-planet>
+
+	<sonya-planet id="earth" class="earth"
+			sprite="http://www.clker.com/cliparts/5/9/c/2/1194984395619889880earth_globe_dan_gerhrads_01.svg.med.png"
+			style="width:50px;height:50px"
+	>
+		<label>
+			<content select="label[for='earth']"></content>
+		</label>
+	</sonya-planet>
+	
+</template>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Definition loading tests</title>
+	<link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
+	<script src="//code.jquery.com/qunit/qunit-1.15.0.js"></script>
+	<script>(function () {
+		require = {
+			baseUrl : '/'
+		};
+	}())</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.js"></script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+
+	<script>
+		require(['src/goro'], function (goro) {
+			'use strict';
+
+			QUnit.asyncTest('test loading definitions', function (assert) {
+				require(['goro.definition!src/elements/TestElement'], function (def) {
+					assert.ok(def, 'Definition loaded without .js');
+				});
+				require(['goro.definition!test/MissingElement'], function (def) {
+					assert.ok(false, 'Missing definition somehow found');
+					assert.ok(def, 'Missing definition exists');
+				}, function () {
+					assert.ok(true, 'Missing definition not found, as expected');
+				});
+			});
+
+		});
+	</script>
+</body>
+</html>

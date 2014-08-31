@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Template tests</title>
+	<link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
+	<script src="//code.jquery.com/qunit/qunit-1.15.0.js"></script>
+	<script>(function () {
+		require = {
+			baseUrl : '/'
+		};
+	}())</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.js"></script>
+</head>
+<body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+
+	<script>
+		require(['src/goro'], function (goro) {
+			'use strict';
+
+			QUnit.asyncTest('test loading templates', function (assert) {
+				require(['goro.template!src/elements/TestElement'], function (tpl) {
+					assert.ok(tpl, 'Template specified without .html loaded');
+				});
+				require(['goro.template!src/elements/TestElement.html'], function (tpl) {
+					assert.ok(tpl, 'Template specified with .html loaded');
+				});
+				require(['goro.template!test/MissingElement'], function (tpl) {
+					assert.ok(false, 'Incorrectly entered success flow for nonexistent template');
+					assert.ok(!tpl, 'Nonexistent template exists');
+				}, function (err) {
+					assert.ok(true, 'Error case reached while trying to load nonexistent template, as expected');
+				});
+			});
+
+		});
+	</script>
+</body>
+</html>

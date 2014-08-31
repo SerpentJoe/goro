@@ -1,0 +1,43 @@
+<template>
+	<style>
+		:host {
+			position : relative;
+			display : inline-block;
+			user-select : none;
+		}
+		.container,
+		.container::after {
+			position : absolute;
+			top : 0;
+			left : 0;
+			right : 0;
+			bottom : 0;
+			border-radius : 9999px;
+		}
+		.container {
+			background : url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVUlEQVQYV2P88OH/fwYg4OEpBVEo4MuXbjifEaSQkCKQasY/f0rAJiIDZJNg4hgKsSkC2YiiEJciFKvxKYIrJKQIrBAWPMiewRYKGApxBRWKQnzhCQDUKj94ZFWCdQAAAABJRU5ErkJggg==);
+			overflow : hidden;
+		}
+		.container::after {
+			content : '';
+			z-index : 1;
+			
+			box-shadow : inset 1px 1px 1px rgba(0, 0, 0, .3);
+		}
+		.progress {
+			position : absolute;
+			top : 0;
+			left : 0;
+			bottom : 0;
+			padding : 0;
+			border-radius : 2px;
+			background : #38d;
+			box-shadow : inset -5px 0 2px -5px rgba(0, 0, 0, .9);
+			/*transition : width .5s cubic-bezier(.333,0, .667,1);*/
+		}
+	</style>
+	
+	<div class="container">
+		<div class="progress"></div>
+	</div>
+</template>
